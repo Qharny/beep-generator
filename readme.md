@@ -1,11 +1,8 @@
-Here's a README.md for your Beep Generator project:
-
-```markdown
 # Beep Generator
 
 A simple, elegant web-based tone generator with a modern UI. This application allows users to create customizable beep sounds by adjusting frequency and duration parameters in real-time.
 
-![Beep Generator Demo](demo.gif) 
+![Beep Generator Demo](https://github.com/Qharny/beep-generator/blob/main/video.gif?raw=true) 
 
 ## Features
 
@@ -18,7 +15,7 @@ A simple, elegant web-based tone generator with a modern UI. This application al
 
 ## Live Demo
 
-[Try it here](#) <!-- Add your deployed version link if available -->
+[Try it here](https://github.com/Qharny/beep-generator/blob/main/video.gif?raw=true) 
 
 ## Getting Started
 
