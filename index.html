@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beeps</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: #45a049;
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            color: white;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        .value-display {
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <button id="beepButton">Play Beep</button>
+            <div class="slider-container">
+                <label for="frequency">Frequency (Hz)</label>
+                <input type="range" id="frequency" min="200" max="2000" value="440" step="10">
+                <div class="value-display" id="frequencyValue">440 Hz</div>
+            </div>
+            <div class="slider-container">
+                <label for="duration">Duration (ms)</label>
+                <input type="range" id="duration" min="50" max="2000" value="200" step="50">
+                <div class="value-display" id="durationValue">200 ms</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const beepButton = document.getElementById('beepButton');
+        const frequencySlider = document.getElementById('frequency');
+        const durationSlider = document.getElementById('duration');
+        const frequencyValue = document.getElementById('frequencyValue');
+        const durationValue = document.getElementById('durationValue');
+
+        function playBeep() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.value = frequencySlider.value;
+            
+            gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + durationSlider.value / 1000);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + durationSlider.value / 1000);
+        }
+
+        beepButton.addEventListener('click', playBeep);
+
+        frequencySlider.addEventListener('input', () => {
+            frequencyValue.textContent = `${frequencySlider.value} Hz`;
+        });
+
+        durationSlider.addEventListener('input', () => {
+            durationValue.textContent = `${durationSlider.value} ms`;
+        });
+    </script>
+</body>
+</html>
