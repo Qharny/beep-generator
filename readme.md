@@ -3,6 +3,7 @@
 A simple, elegant web-based tone generator with a modern UI. This application allows users to create customizable beep sounds by adjusting frequency and duration parameters in real-time.
 
 ![Beep Generator Demo](https://github.com/Qharny/beep-generator/blob/main/video.gif?raw=true) 
+![Beep Generator Demo](./video.gif) 
 
 ## Features
 
