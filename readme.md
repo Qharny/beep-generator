@@ -57,32 +57,3 @@ Works in all modern browsers that support the Web Audio API:
 ## License
 
 MIT License - feel free to use this project however you'd like!
-
-## Creating a Demo Video
-
-To create a demo video/gif for this project:
-
-1. Record your screen while using the application
-   - On Windows: Use Windows Game Bar (Win + G)
-   - On Mac: Use QuickTime Player
-   - Or use tools like OBS Studio
-
-2. Convert to GIF using:
-   - [EzGIF](https://ezgif.com/)
-   - [CloudConvert](https://cloudconvert.com/)
-   - Or similar online tools
-
-3. Save the gif as `demo.gif` in your project root
-
-## Contributing
-
-Feel free to open issues or submit pull requests if you have suggestions for improvements!
-```
-
-To complete the README:
-1. Create a demo video/gif showing the interface in action
-2. Add your repository URL
-3. Add a live demo link if you deploy it
-4. Customize the license section according to your preferences
-
-The README provides a comprehensive overview of your project while maintaining a professional and friendly tone. The inclusion of emojis makes it more visually engaging while the technical details make it useful for developers.
